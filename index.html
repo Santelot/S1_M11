@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M11</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos cómo descomponer figuras complejas en formas simples para construir modelos 3D. ¡Vamos a comenzar!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver cómo están hoy. Si están listos para diseñar, estiren los brazos hacia adelante; si necesitan recargar, junten las manos sobre su cabeza."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos importantes: 1. Descomponer figuras complejas en formas simples. 2. Aplicar esa descomposición en Tinkercad. 3. Entender cómo esta técnica facilita el modelado de objetos complejos."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Presentación de una innovación que sirve como ejemplo de descomposición en el diseño.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a ver un ejemplo de la vida real donde la simplicidad de las formas ayuda a crear objetos complejos. Les presento IKEA Furniture, donde los muebles son diseñados para ser ensamblados a partir de piezas simples, haciendo el montaje fácil y accesible."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 7 "Ejemplo de Descomposición".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Aquí vemos cómo un mueble complejo puede dividirse en partes simples. Esto es similar a lo que haremos en modelado 3D, donde utilizamos formas básicas para crear objetos más complejos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 8 "Reflexión sobre IKEA".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? IKEA nos muestra cómo la descomposición facilita la creación de productos complejos. Hoy aplicaremos esta idea en 3D para modelar nuestros propios diseños."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 15 minutos</div>
+        <div class="subtitle">Exploración de la descomposición geométrica en TinkerCAD para modelado 3D.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción a la Descomposición".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy aprenderemos sobre una técnica esencial en diseño 3D llamada descomposición geométrica. Aunque suene complicado, esta técnica es sencilla: consiste en descomponer figuras complejas en formas más simples, como cubos, cilindros y esferas. Esta habilidad es clave en TinkerCAD y en otros programas de diseño, y les ayudará a abordar cualquier proyecto de manera más ordenada y eficiente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "¿Qué es la Descomposición Geométrica?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La descomposición geométrica es como dividir un diseño complejo en piezas más fáciles de manejar. Por ejemplo, al crear un robot o una casa, en lugar de diseñarlo de una sola vez, lo dividimos en piezas. Imaginemos un coche: la carrocería puede ser un rectángulo, las ruedas son cilindros, y los faros esferas. Al separar cada componente, podemos construirlo pieza por pieza hasta formar el objeto completo. Un dato curioso y divertido es el llamado 'Teorema de la pizza'. Imagina que tienes una pizza circular y la cortas en ocho partes iguales desde el centro, pero con ángulos especiales. ¡Resulta que las áreas de las rebanadas de un lado serán iguales a las del otro, sin importar lo delgados o gruesos que sean los cortes! Este truco geométrico nos muestra que, al dividir una figura en partes, podemos descubrir patrones sorprendentes en cosas tan cotidianas como una pizza."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "¿Por qué aprender Descomposición?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La descomposición geométrica tiene muchas ventajas: facilita el diseño porque trabajar con formas simples es más fácil que modificar un modelo complejo. Ahorra tiempo y esfuerzo, ya que es más rápido hacer ajustes en figuras sencillas. Además, esta técnica no solo se usa en diseño 3D; también en arquitectura, robótica y videojuegos, donde objetos y personajes son creados combinando formas simples."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Guía Paso 1".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El primer paso para descomponer es observar bien el objeto completo. Identifiquen las formas principales que lo componen. Por ejemplo, si queremos hacer una torre de castillo, podríamos ver que la torre es como un cilindro, el techo es un cono, y la puerta es un rectángulo. Observar el modelo como conjunto y analizar sus partes es esencial para empezar la descomposición."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Guía Paso 2".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En el segundo paso, descomponemos en formas simples. Pensemos en cada parte del modelo como una figura geométrica básica. Por ejemplo, en un avión, el fuselaje es un cilindro, las alas son rectángulos y las turbinas cilindros más pequeños. Visualizar cada parte de esta forma ayuda a organizar las formas que utilizaremos en TinkerCAD."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 14 "Guía Paso 3".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, con las formas simples identificadas, vamos a construir el modelo en TinkerCAD. Coloca cada figura en el espacio de trabajo sin preocuparte demasiado por los detalles al inicio. Simplemente ubica y orienta las formas en posiciones aproximadas; la idea es ver si el conjunto empieza a tomar la forma deseada."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (2 minutos):</strong> Proyectar Diapositiva 15 "Guía Paso 4".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, en el paso 4, ajusta y une las piezas. Ahora que las formas están en la posición correcta, ajusta su tamaño y detalles. Modifica rotación, tamaño y posición para que se vean como la figura final. En TinkerCAD, pueden agrupar las formas para que se conviertan en una sola estructura."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Ejemplos Cotidianos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La descomposición geométrica se usa en muchas áreas. En arquitectura, los edificios se diseñan primero usando formas simples y luego se añaden detalles. En animación y videojuegos, personajes y objetos también empiezan como formas simples. Incluso en robótica, los componentes se diseñan con esta técnica."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Tips y Hacks".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Algunos tips para mejorar en esta técnica: empiecen con formas básicas, incluso si creen que necesitan una forma rara. Usen la herramienta de agrupación en TinkerCAD para simplificar el trabajo. También, experimenten con alineación para centrar sus figuras y no teman usar formas en modo 'hueco' para hacer cortes."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1.5 minutos):</strong> Proyectar Diapositiva 18 "Conclusión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La descomposición geométrica es como armar un rompecabezas. Al aprender esta técnica, podrán crear desde figuras sencillas hasta modelos muy complejos. Practicar esto en TinkerCAD les ayudará en cualquier software de diseño 3D que usen en el futuro."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos avanzado en varios objetivos de esta misión: comprendimos qué es la descomposición geométrica y su utilidad, y aprendimos los pasos básicos para aplicar esta técnica en diseño 3D. ¡Gran trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🎨 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa creativa para estimular la imaginación y relajar la mente.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Dibuja un Doodle".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una pausa rápida para estimular nuestra creatividad. Tomen un lápiz y una hoja de papel, y dibujen cualquier cosa que se les ocurra en 1 minuto. No tiene que ser algo perfecto; la idea es dejar que la imaginación fluya."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 21 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Reflexión sobre el Doodle".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo. Este pequeño ejercicio ayuda a nuestra mente a relajarse y a despertar la creatividad. Tomarse un minuto para dibujar cualquier cosa también mejora nuestra concentración y nos prepara para retomar las actividades con una nueva energía."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para trabajar en el reto de la misión.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta misión vamos a trabajar en equipos de dos personas. Tómense un minuto para encontrar a un compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen a su compañero, envíen a un representante de su equipo a recoger una Magic Tablet para comenzar nuestro siguiente reto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 26 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 15 minutos</div>
+        <div class="subtitle">Aplicar la técnica de descomposición geométrica en un ejercicio práctico.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora llega el momento de aplicar lo aprendido con nuestro Challenge. Vamos a utilizar la descomposición geométrica en un ejercicio práctico para acercarnos al modelado 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 28 "Descomponiendo la Silueta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este Challenge, vamos a trabajar en descomponer la silueta de un avión en papel utilizando formas simples como círculos, triángulos y rectángulos. No es necesario copiar la silueta para después descomponerla; pueden empezar directamente el proceso de descomposición. Para hacerlo más interesante, pueden elegir entre tres siluetas de aviones, cada una más compleja que la anterior. Elijan la que sientan que les desafía lo suficiente y traten de imaginar cómo las formas simples se combinan para dar esa estructura general. Una vez elegida su silueta, empiecen a construir cada parte con formas geométricas. Esto les ayudará a visualizar cómo se pueden ensamblar las figuras en el modelado 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 29 "Cronómetro - 10 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Foto del Diseño".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Tiempo! Ahora, tomen una foto de sus diseños. Estos diseños les servirán como guía para cuando empecemos a modelar el avión en TinkerCAD. Es muy importante que tengan esta referencia visual, ya que les ayudará a recordar cómo descompusieron la figura y a reconstruirla en 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 31 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 32 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos logrado cumplir todos los objetivos de esta misión. Hoy han aprendido a descomponer figuras complejas en formas simples, aplicaron esta técnica en una tarea práctica, y ahora tienen una comprensión más profunda de cómo utilizarán esta habilidad en el modelado 3D. ¡Buen trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 33 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han hecho un gran trabajo y aplicaron de manera increíble la descomposición geométrica. Con esta actividad ganan Mon-e para reconocer su esfuerzo y dedicación. Sigamos adelante con más desafíos en el modelado 3D."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Evaluar la atención con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora de ver quién ha estado prestando atención. La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden la dinámica: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, dos, tres. Levanten la mano si saben la respuesta. ¡Muy bien! Vamos a escuchar lo que tienen que decir."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 36 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído. Ahora tú, dos. Y por último, el tres. La respuesta correcta es 'Teorema de la Pizza'. ¡Muy bien, a los ganadores les toca Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Despedida y recogida de materiales.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 37 y reproducir la animación de honor de dojo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento de dejar nuestro espacio limpio y organizado. Cada equipo, pase al frente y entreguen sus Magic Tablets. Gracias por contribuir al orden en nuestro Dojo de aprendizaje."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
